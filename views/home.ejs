@@ -1,0 +1,28 @@
+<%- include('partials/header') %>
+    <h1>This is the home page.</h1>
+    <form action="/" method="POST" class="form-container">
+      <div class="form-part">
+        <label for="postTitle">Title the post: </label>
+        <input type="text" name="postTitle" id="postTitle" placeholder="Enter title here...">
+      </div>
+      <div class="form-part">
+        <textarea name="postContent" id="postContent" rows="10"></textarea>
+      </div>
+      <button class="submit btn" type="submit">Submit</button>
+    </form>
+    <div class="posts-container">
+      <% posts.forEach(post => { %>
+        <div class="post-container">
+          <h1><%= post.title %></h1>
+          <p><%= post.postContent %></p>
+          <small><%= post.datePosted %></small>
+          <div class="director">
+            <a href="/post/<%= post._id %>">Go to Post</a>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+    <script src="/js/script.js"></script>
+  </body>
+</html>
+<%- include('partials/footer') %>

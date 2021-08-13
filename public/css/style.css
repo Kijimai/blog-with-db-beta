@@ -1,0 +1,78 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  background: linear-gradient(#e66465, #9198e5) no-repeat;
+  min-height: 100vh;
+  font-family: 'Atkinson Hyperlegible', sans-serif;
+}
+
+/* Navigator Section */
+
+
+
+/* Form Section */
+
+.form-container {
+  margin: 2rem 0;
+  padding: 1rem 2rem;
+  max-width: 800px;
+}
+
+label,
+input,
+textarea {
+  padding: 0.5rem;
+  display: block;
+  font-size: 1.6rem;
+  width: 100%;
+}
+
+textarea::placeholder,
+input::placeholder {
+  font-size: 1.3rem;
+}
+
+input:-webkit-autofill::first-line {
+  font-size: 1.3rem;
+}
+
+.btn {
+  display: block;
+  border: none;
+  text-align: center;
+  padding: 1rem 2rem;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+ 
+.form-part {
+  margin: 1rem 0;
+}
+
+.form-container .btn {
+  margin-left: auto;
+}
+
+footer {
+  margin-top: auto;
+}
+
+/* Posts in Home Page */
+
+.posts-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Post Page */
+

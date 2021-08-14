@@ -76,3 +76,9 @@ footer {
 
 /* Post Page */
 
+.error-stack-container {
+  background-color: rgba(173, 216, 230, 0.3);
+  color: #fff;
+  max-width: 500px;
+  padding: 25px 40px;
+}

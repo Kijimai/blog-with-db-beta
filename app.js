@@ -4,7 +4,10 @@ const mongoose = require('mongoose')
 const ejs = require('ejs')
 const Post = require('./models/postModel')
 const app = express()
+const ExpressError = require('./utils/ExpressError')
+const catchAsync = require('./utils/catchAsync')
 
+//connects to the local mongo database
 mongoose.connect('mongodb://localhost:27017/userPostsDB', {
   useNewUrlParser: true,
   useCreateIndex: true,
@@ -28,8 +31,11 @@ app.get('/', async(req, res) =>  {
   res.render('home', { posts })
 })
 
-app.get('/post/:id', async(req, res) => {
+app.get('/post/:id', async(req, res, next) => {
   const post = await Post.findById(req.params.id)
+  if(!post) {
+    return next(new ExpressError('Post not found!', 404))
+  }
   res.render('displayPost', { post:post })
 })
 
@@ -52,6 +58,15 @@ app.post('/', async(req, res) => {
   res.redirect(`/post/${userPost._id}`) 
 })
 
+// app.delete('/posts/:id', async(req, res) => {
+
+// })
+
+app.use((err, req, res, next) => {
+  const { status = 500, message = 'Something went terribly wrong!' } = err
+  console.log("Something wrong has occured!")
+  res.status(status).render('error', { message: message , errStack: err.stack})
+})
 
 app.listen(process.env.PORT || 3000,  () => {
   console.log("App listening on port 3000.")
